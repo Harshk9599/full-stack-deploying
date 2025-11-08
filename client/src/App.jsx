@@ -5,24 +5,52 @@ function App() {
   const [message, setMessage] = useState("");
 
   useEffect(() => {
-    // ✅ Always use relative path in production — handled by proxy (Vite/Nginx)
+    // ✅ Use relative path so Nginx or Vite proxy handles it
     fetch("/api/message")
       .then((res) => res.json())
       .then((data) => setMessage(data.message))
       .catch((err) => {
-        console.error("❌ Error fetching message:", err);
+        console.error("Error fetching message", err);
       });
   }, []);
 
   return (
     <>
       <h1>Welcome to HK-Developers Frontend 🚀</h1>
-      <h2>Data: {message ? message : "Loading..."}</h2>
+      <h2>Data: {message || "Loading..."}</h2>
     </>
   );
 }
 
 export default App;
+
+
+
+// import { useState, useEffect } from "react";
+// import "./App.css";
+
+// function App() {
+//   const [message, setMessage] = useState("");
+
+//   useEffect(() => {
+//     // ✅ Always use relative path in production — handled by proxy (Vite/Nginx)
+//     fetch("/api/message")
+//       .then((res) => res.json())
+//       .then((data) => setMessage(data.message))
+//       .catch((err) => {
+//         console.error("❌ Error fetching message:", err);
+//       });
+//   }, []);
+
+//   return (
+//     <>
+//       <h1>Welcome to HK-Developers Frontend 🚀</h1>
+//       <h2>Data: {message ? message : "Loading..."}</h2>
+//     </>
+//   );
+// }
+
+// export default App;
 
 
 
