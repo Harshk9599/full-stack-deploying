@@ -6,7 +6,7 @@ function App() {
 
   useEffect(() => {
     // ✅ Use relative path so Nginx or Vite proxy handles it
-    fetch("http://http://34.126.208.71:4000/api/message")
+    fetch("http://34.126.208.71:4000/api/message")
       .then((res) => res.json())
       .then((data) => setMessage(data.message))
       .catch((err) => {
